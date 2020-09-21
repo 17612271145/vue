@@ -213,7 +213,7 @@ export default class Watcher {
   }
 
   /**
-   * Depend on all deps collected by this watcher.
+   * 依赖于此观察者收集的所有DEP。
    */
   depend () {
     let i = this.deps.length

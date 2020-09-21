@@ -25,16 +25,16 @@ export function initMixin (Vue: Class<Component>) {
       mark(startTag)
     }
 
-    // a flag to avoid this being observed
+    // 一个避免被观察到的标志
     vm._isVue = true
     // merge options
     if (options && options._isComponent) {
-      // optimize internal component instantiation
-      // since dynamic options merging is pretty slow, and none of the
-      // internal component options needs special treatment.
+      // 优化内部组件实例化
+      // 因为动态选项合并非常慢，而且没有任何内部组件选项需要特殊处理
       initInternalComponent(vm, options)
     } else {
       vm.$options = mergeOptions(
+        //合并全局的components、directives、filters到当前组件
         resolveConstructorOptions(vm.constructor),
         options || {},
         vm
@@ -49,11 +49,13 @@ export function initMixin (Vue: Class<Component>) {
     }
     // expose real self
     vm._self = vm
+    
+    // 实例 property
     initLifecycle(vm)
     initEvents(vm)
     initRender(vm)
     callHook(vm, 'beforeCreate')
-    initInjections(vm) // resolve injections before data/props
+    initInjections(vm) // 在数据/道具之前解决注入问题
     initState(vm)
     initProvide(vm) // resolve provide after data/props
     callHook(vm, 'created')
@@ -73,7 +75,7 @@ export function initMixin (Vue: Class<Component>) {
 
 export function initInternalComponent (vm: Component, options: InternalComponentOptions) {
   const opts = vm.$options = Object.create(vm.constructor.options)
-  // doing this because it's faster than dynamic enumeration.
+  // 这样做是因为它比动态枚举快。
   const parentVnode = options._parentVnode
   opts.parent = options.parent
   opts._parentVnode = parentVnode
@@ -96,12 +98,11 @@ export function resolveConstructorOptions (Ctor: Class<Component>) {
     const superOptions = resolveConstructorOptions(Ctor.super)
     const cachedSuperOptions = Ctor.superOptions
     if (superOptions !== cachedSuperOptions) {
-      // super option changed,
-      // need to resolve new options.
+      // super选项已更改，需要解决新选项。
       Ctor.superOptions = superOptions
-      // check if there are any late-modified/attached options (#4976)
+      // 检查是否有任何最新修改/附加的选项 (#4976)
       const modifiedOptions = resolveModifiedOptions(Ctor)
-      // update base extend options
+      // 更新基本扩展选项
       if (modifiedOptions) {
         extend(Ctor.extendOptions, modifiedOptions)
       }

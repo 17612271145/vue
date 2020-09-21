@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-17 15:52:16
- * @LastEditTime: 2020-09-18 13:56:15
+ * @LastEditTime: 2020-09-21 15:34:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue\src\core\global-api\index.js
@@ -74,6 +74,6 @@ export function initGlobalAPI (Vue) {
   initUse(Vue)
   initMixin(Vue)
   initExtend(Vue)
-  
+  //初始化自定义 指令、全局组件、filter
   initAssetRegisters(Vue)
 }

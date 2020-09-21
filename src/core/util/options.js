@@ -259,7 +259,7 @@ strats.computed = function (
 strats.provide = mergeDataOrFn
 
 /**
- * Default strategy.
+ * 默认策略.
  */
 const defaultStrat = function (parentVal: any, childVal: any): any {
   return childVal === undefined
@@ -292,8 +292,7 @@ export function validateComponentName (name: string) {
 }
 
 /**
- * Ensure all props option syntax are normalized into the
- * Object-based format.
+ * 确保所有props选项语法规范化为基于对象的格式。
  */
 function normalizeProps (options: Object, vm: ?Component) {
   const props = options.props
@@ -330,7 +329,7 @@ function normalizeProps (options: Object, vm: ?Component) {
 }
 
 /**
- * Normalize all injections into Object-based format
+ * 将所有注入规范化为基于对象的格式
  */
 function normalizeInject (options: Object, vm: ?Component) {
   const inject = options.inject
@@ -357,7 +356,7 @@ function normalizeInject (options: Object, vm: ?Component) {
 }
 
 /**
- * Normalize raw function directives into object format.
+ * 将原始函数指令规范化为对象格式。
  */
 function normalizeDirectives (options: Object) {
   const dirs = options.directives

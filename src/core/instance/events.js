@@ -10,9 +10,9 @@ import {
 import { updateListeners } from '../vdom/helpers/index'
 
 export function initEvents (vm: Component) {
-  vm._events = Object.create(null)
-  vm._hasHookEvent = false
-  // init parent attached events
+  console.dir('initEvents-start')
+  console.dir(Object.assign({},vm))
+  //初始化父级附加事件
   const listeners = vm.$options._parentListeners
   if (listeners) {
     updateComponentListeners(vm, listeners)

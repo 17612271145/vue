@@ -1,9 +1,17 @@
+/*
+ * @Author: your name
+ * @Date: 2020-09-18 14:00:02
+ * @LastEditTime: 2020-09-21 13:42:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue\src\core\instance\render-helpers\resolve-slots.js
+ */
 /* @flow */
 
 import type VNode from 'core/vdom/vnode'
 
 /**
- * Runtime helper for resolving raw children VNodes into a slot object.
+ * 用于将原始子vNode解析为slot对象的运行时帮助程序.
  */
 export function resolveSlots (
   children: ?Array<VNode>,
@@ -16,12 +24,11 @@ export function resolveSlots (
   for (let i = 0, l = children.length; i < l; i++) {
     const child = children[i]
     const data = child.data
-    // remove slot attribute if the node is resolved as a Vue slot node
+    // 如果节点解析为Vue插槽节点，请删除插槽属性
     if (data && data.attrs && data.attrs.slot) {
       delete data.attrs.slot
     }
-    // named slots should only be respected if the vnode was rendered in the
-    // same context.
+    // 仅当vnode在同一上下文中呈现时，才应考虑命名槽。
     if ((child.context === context || child.fnContext === context) &&
       data && data.slot != null
     ) {
@@ -36,7 +43,7 @@ export function resolveSlots (
       (slots.default || (slots.default = [])).push(child)
     }
   }
-  // ignore slots that contains only whitespace
+  // 忽略只包含空白的插槽
   for (const name in slots) {
     if (slots[name].every(isWhitespace)) {
       delete slots[name]

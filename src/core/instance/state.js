@@ -64,11 +64,10 @@ export function initState (vm: Component) {
 function initProps (vm: Component, propsOptions: Object) {
   const propsData = vm.$options.propsData || {}
   const props = vm._props = {}
-  // cache prop keys so that future props updates can iterate using Array
-  // instead of dynamic object key enumeration.
+  // 缓存属性键，以便将来的属性更新可以使用数组而不是动态对象键枚举进行迭代。
   const keys = vm.$options._propKeys = []
   const isRoot = !vm.$parent
-  // root instance props should be converted
+  // 应转换根实例属性
   if (!isRoot) {
     toggleObserving(false)
   }
@@ -317,9 +316,7 @@ function createWatcher (
 }
 
 export function stateMixin (Vue: Class<Component>) {
-  // flow somehow has problems with directly declared definition object
-  // when using Object.defineProperty, so we have to procedurally build up
-  // the object here.
+  // 在使用时，flow与直接声明的定义对象存在某种问题对象定义属性，所以我们必须按程序在这里建立对象.
   const dataDef = {}
   dataDef.get = function () { return this._data }
   const propsDef = {}

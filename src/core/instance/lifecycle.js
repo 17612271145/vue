@@ -28,12 +28,14 @@ export function setActiveInstance(vm: Component) {
     activeInstance = prevActiveInstance
   }
 }
-
+// 实例 property
 export function initLifecycle (vm: Component) {
   const options = vm.$options
 
   // locate first non-abstract parent
   let parent = options.parent
+ 
+ 
   if (parent && !options.abstract) {
     while (parent.$options.abstract && parent.$parent) {
       parent = parent.$parent
@@ -53,6 +55,7 @@ export function initLifecycle (vm: Component) {
   vm._isMounted = false
   vm._isDestroyed = false
   vm._isBeingDestroyed = false
+
 }
 
 export function lifecycleMixin (Vue: Class<Component>) {
@@ -334,7 +337,7 @@ export function deactivateChildComponent (vm: Component, direct?: boolean) {
 }
 
 export function callHook (vm: Component, hook: string) {
-  // #7573 disable dep collection when invoking lifecycle hooks
+  // #7573 调用生命周期钩子时禁用dep集合
   pushTarget()
   const handlers = vm.$options[hook]
   const info = `${hook} hook`

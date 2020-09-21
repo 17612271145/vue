@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-09-18 14:00:02
+ * @LastEditTime: 2020-09-21 10:23:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue\src\core\vdom\helpers\update-listeners.js
+ */
 /* @flow */
 
 import {
@@ -92,4 +100,7 @@ export function updateListeners (
       remove(event.name, oldOn[name], event.capture)
     }
   }
+  console.dir('initEvents-end')
+  console.dir(Object.assign({},vm))
+  debugger 
 }

@@ -30,6 +30,7 @@ Vue.prototype.$mount = function (
   }
 
   const options = this.$options
+
   // resolve template/el and convert to render function
   if (!options.render) {
     let template = options.template

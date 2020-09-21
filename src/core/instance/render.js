@@ -17,24 +17,21 @@ import VNode, { createEmptyVNode } from '../vdom/vnode'
 import { isUpdatingChildComponent } from './lifecycle'
 
 export function initRender (vm: Component) {
-  vm._vnode = null // the root of the child tree
+  vm._vnode = null // 初始化虚拟dom
   vm._staticTrees = null // v-once cached trees
   const options = vm.$options
-  const parentVnode = vm.$vnode = options._parentVnode // the placeholder node in parent tree
+  const parentVnode = vm.$vnode = options._parentVnode // 父节点的虚拟dom
   const renderContext = parentVnode && parentVnode.context
   vm.$slots = resolveSlots(options._renderChildren, renderContext)
   vm.$scopedSlots = emptyObject
-  // bind the createElement fn to this instance
-  // so that we get proper render context inside it.
-  // args order: tag, data, children, normalizationType, alwaysNormalize
-  // internal version is used by render functions compiled from templates
+
+  // 将createElement fn绑定到此实例，以便在其中获得适当的呈现上下文。
+  // args order: tag, data, children, normalizationType, AlwaysNoMalize内部版本由从模板编译的呈现函数使用
   vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
-  // normalization is always applied for the public version, used in
-  // user-written render functions.
+  // 规范化始终应用于公共版本，在用户编写的呈现函数中使用。
   vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
 
-  // $attrs & $listeners are exposed for easier HOC creation.
-  // they need to be reactive so that HOCs using them are always updated
+  // $attrs和$listeners被公开以便于HOC创造。他们必须是被动的，这样使用它们的HOC总是更新的
   const parentData = parentVnode && parentVnode.data
 
   /* istanbul ignore else */
