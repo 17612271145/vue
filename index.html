@@ -10,28 +10,29 @@
     <herder/>
     {{da}}
   </div>
+
 </body>
 <script src="./dist/vue.js"></script>
 <script>
-Vue.component('herder',{
-  name:'herder',
-  data:function(){
-    return {
-      title:'周亮1'
+  debugger 
+  const Parent = Vue.extend({
+    created: function () {
+      console.log('parentVal')
     }
-  },
-  template:`<a>{{title}}</a>`
-})
-console.dir('VUE')
-console.dir(Vue)
-let vue = new Vue({
-  el:"#app",
-  data:function(){
-    return {
-      da:1
+  })
+  const ccc = Parent.extend({
+    created: function () {
+      console.log('parentVal')
     }
-  } 
-})
-
+  })
+  const Child = new Parent({
+    created: function () {
+      console.log('childVal')
+    }
+  })
+  console.dir(Parent)
+  console.dir(ccc)
+  console.dir(Child)
+  debugger 
 </script>
 </html>
