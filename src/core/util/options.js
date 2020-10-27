@@ -268,7 +268,7 @@ const defaultStrat = function (parentVal: any, childVal: any): any {
 }
 
 /**
- * Validate component names
+ * 检查组件名称是否合法
  */
 function checkComponents (options: Object) {
   for (const key in options.components) {
@@ -368,6 +368,7 @@ function normalizeDirectives (options: Object) {
       }
     }
   }
+  debugger 
 }
 
 function assertObjectType (name: string, value: any, vm: ?Component) {
@@ -421,11 +422,13 @@ export function mergeOptions (
   for (key in parent) {
     mergeField(key)
   }
+  debugger 
   for (key in child) {
     if (!hasOwn(parent, key)) {
       mergeField(key)
     }
   }
+
   function mergeField (key) {
     const strat = strats[key] || defaultStrat
     options[key] = strat(parent[key], child[key], vm, key)

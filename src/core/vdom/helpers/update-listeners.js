@@ -102,5 +102,4 @@ export function updateListeners (
   }
   console.dir('initEvents-end')
   console.dir(Object.assign({},vm))
-  debugger 
 }

@@ -7,32 +7,34 @@
 </head>
 <body>
   <div id="app">
-    <herder/>
-    {{da}}
+
+    {{a}}
   </div>
 
 </body>
 <script src="./dist/vue.js"></script>
 <script>
-  debugger 
-  const Parent = Vue.extend({
-    created: function () {
-      console.log('parentVal')
+  Vue.config.performance = true
+  let vm = new Vue({
+    data:function(){
+      return {
+        a:1
+      }
+    },
+    propsData:{
+      p:1
+    },
+    props:['p'],
+    directives: {
+      focus: function (el) {
+        el.focus()
+      }
+    },
+    beforeCreate:function(){
+      console.log('a is: ' + this.a)
     }
-  })
-  const ccc = Parent.extend({
-    created: function () {
-      console.log('parentVal')
-    }
-  })
-  const Child = new Parent({
-    created: function () {
-      console.log('childVal')
-    }
-  })
-  console.dir(Parent)
-  console.dir(ccc)
-  console.dir(Child)
-  debugger 
+  }).$mount('#app')
+
+
 </script>
 </html>

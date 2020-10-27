@@ -14,7 +14,12 @@ const banner =
   ` * Vue.js v${version}\n` +
   ` * (c) 2014-${new Date().getFullYear()} Evan You\n` +
   ' * Released under the MIT License.\n' +
-  ' */'
+  ' */' +
+  `var process = {
+    env: {
+      NODE_ENV: 'dev'
+    }
+  }`
 
 const weexFactoryPlugin = {
   intro () {

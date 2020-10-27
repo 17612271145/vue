@@ -48,6 +48,7 @@ export function proxy (target: Object, sourceKey: string, key: string) {
 export function initState (vm: Component) {
   vm._watchers = []
   const opts = vm.$options
+  debugger 
   if (opts.props) initProps(vm, opts.props)
   if (opts.methods) initMethods(vm, opts.methods)
   if (opts.data) {
@@ -63,6 +64,7 @@ export function initState (vm: Component) {
 
 function initProps (vm: Component, propsOptions: Object) {
   const propsData = vm.$options.propsData || {}
+  debugger 
   const props = vm._props = {}
   // 缓存属性键，以便将来的属性更新可以使用数组而不是动态对象键枚举进行迭代。
   const keys = vm.$options._propKeys = []

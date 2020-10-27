@@ -41,7 +41,7 @@ export function initMixin (Vue: Class<Component>) {
       )
     }
 
-    /* istanbul ignore else */
+    /* istanbul ignore else */ 
     if (process.env.NODE_ENV !== 'production') {
       initProxy(vm)
     } else {
@@ -56,6 +56,7 @@ export function initMixin (Vue: Class<Component>) {
     initRender(vm)
     callHook(vm, 'beforeCreate')
     initInjections(vm) // 在数据/道具之前解决注入问题
+
     initState(vm)
     initProvide(vm) // resolve provide after data/props
     callHook(vm, 'created')
@@ -112,6 +113,7 @@ export function resolveConstructorOptions (Ctor: Class<Component>) {
       }
     }
   }
+  debugger 
   return options
 }
 

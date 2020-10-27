@@ -46,7 +46,7 @@ export function resolveInject (inject: any, vm: Component): ?Object {
 
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i]
-      // #6574 in case the inject object is observed...
+      // #6574 如果观察到注入物...
       if (key === '__ob__') continue
       const provideKey = inject[key].from
       let source = vm
